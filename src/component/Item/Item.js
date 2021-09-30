@@ -1,8 +1,10 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 const Item = props => {
-    const { strMeal, strMealThumb } = props.data;
+    const { strMeal, strMealThumb, idMeal } = props.data;
+    console.log(idMeal);
     return (
         <Card>
             <Card.Img variant="top" src={strMealThumb} />
@@ -13,7 +15,9 @@ const Item = props => {
                     additional content. This content is a little bit longer.
                 </Card.Text>
             </Card.Body>
-            <button className='btn btn-warning'>learn more</button>
+            <NavLink to={`/show/${idMeal}`}>
+                <button className='btn btn-warning'>learn more</button>
+            </NavLink>
         </Card>
     );
 };

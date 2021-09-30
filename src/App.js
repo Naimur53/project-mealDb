@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/show">
             <Show text={text}></Show>
           </Route>
-          <Route exact path="/show/:Id">
+          <Route exact path="/show/:idMeal">
             <Details></Details>
           </Route>
         </Switch>

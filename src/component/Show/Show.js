@@ -6,7 +6,7 @@ const Show = props => {
     const { text } = props;
     const [data, setData] = useState([]);
     useEffect(() => {
-        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${text}`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
             .then(res => res.json())
             .then(result => setData(result))
     }, [text]);
