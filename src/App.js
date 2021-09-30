@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Topbar from './component/Topbar/Topbar';
+import { useState } from 'react';
+import Show from './component/Show/Show';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Details from './component/Details/Details';
 function App() {
+  const handleSearch = e => {
+    setText(e.target.value);
+  }
+  const [text, setText] = useState('a');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Topbar handleSearch={handleSearch}></Topbar>
+        <Switch>
+          <Route exact path="/">
+            <div>hi Home</div>
+          </Route>
+          <Route exact path="/Home">
+            <div>hi Home</div>
+          </Route>
+          <Route exact path="/show">
+            <Show text={text}></Show>
+          </Route>
+          <Route exact path="/show/:Id">
+            <Details></Details>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
